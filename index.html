@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-14 Sex 04:36 -->
+<!-- 2017-04-14 Sex 16:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Electron Study</title>
@@ -234,17 +234,25 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcba51e8">1. Objective</a></li>
-<li><a href="#org26334a8">2. Website</a>
+<li><a href="#orgb4054b6">1. Objective</a></li>
+<li><a href="#orgc43ae82">2. Website</a>
 <ul>
-<li><a href="#org6b91d62">2.1. Basic install</a></li>
-<li><a href="#org5642148">2.2. Electron Quick Start</a>
+<li><a href="#org9dcf203">2.1. Basic install</a></li>
+<li><a href="#orge75d171">2.2. Electron Quick Start</a>
 <ul>
-<li><a href="#org153eceb">2.2.1. package.json</a></li>
-<li><a href="#orgb93684a">2.2.2. main.js</a></li>
-<li><a href="#orgde6f04e">2.2.3. index.html</a></li>
+<li><a href="#org96c410d">2.2.1. package.json</a></li>
+<li><a href="#org8dbd12c">2.2.2. main.js</a></li>
+<li><a href="#orgd65e2b9">2.2.3. index.html</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org36e0a69">3. Run</a></li>
+<li><a href="#orgee42c2f">4. Deploy</a>
+<ul>
+<li><a href="#org6c244ed">4.1. Install electron-packager</a></li>
+<li><a href="#org269f622">4.2. Update .gitignore</a></li>
+<li><a href="#orgf4a6348">4.3. Deploy your app</a></li>
 </ul>
 </li>
 </ul>
@@ -252,8 +260,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgcba51e8" class="outline-2">
-<h2 id="orgcba51e8"><span class="section-number-2">1</span> Objective</h2>
+<div id="outline-container-orgb4054b6" class="outline-2">
+<h2 id="orgb4054b6"><span class="section-number-2">1</span> Objective</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Quick straight-forward steps to create a electron-angularJS project
@@ -261,19 +269,19 @@ Quick straight-forward steps to create a electron-angularJS project
 </div>
 </div>
 
-<div id="outline-container-org26334a8" class="outline-2">
-<h2 id="org26334a8"><span class="section-number-2">2</span> Website</h2>
+<div id="outline-container-orgc43ae82" class="outline-2">
+<h2 id="orgc43ae82"><span class="section-number-2">2</span> Website</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Find out more about <a href="https://electron.atom.io/">electron</a> and <a href="https://angularjs.org/">angular</a>. The github page for electron <a href="https://github.com/electron/electron">docs</a>.
 </p>
 </div>
 
-<div id="outline-container-org6b91d62" class="outline-3">
-<h3 id="org6b91d62"><span class="section-number-3">2.1</span> Basic install</h3>
+<div id="outline-container-org9dcf203" class="outline-3">
+<h3 id="org9dcf203"><span class="section-number-3">2.1</span> Basic install</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="org072bbad"><span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install as a development dependency</span>
+<pre class="src src-shell" id="orgb119265"><span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install as a development dependency</span>
 <span style="color: #bbb8ad;">#</span><span style="color: #bbb8ad;">npm install electron</span>
 
 <span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install the `electron` command globally in your $PATH</span>
@@ -283,35 +291,37 @@ npm i -g electron
 </div>
 </div>
 
-<div id="outline-container-org5642148" class="outline-3">
-<h3 id="org5642148"><span class="section-number-3">2.2</span> Electron Quick Start</h3>
+<div id="outline-container-orge75d171" class="outline-3">
+<h3 id="orge75d171"><span class="section-number-3">2.2</span> Electron Quick Start</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="orge768e03">mkdir -p ~/workspace/node/qs-electron
+<pre class="src src-shell" id="org299b5f4">mkdir -p ~/workspace/node/qs-electron
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org4043ae3">touch package.json
+<pre class="src src-shell" id="org40c5c19">touch package.json
 touch main.js
 touch index.html
 
-tree
+tree -FL 1 | grep -v /$
 </pre>
 </div>
 
 <pre class="example">
 .
+├── electron.html
 ├── index.html
+├── LICENSE
 ├── main.js
-└── package.json
+├── package.json
 
-0 directories, 3 files
+2 directories, 5 files
 </pre>
 </div>
 
-<div id="outline-container-org153eceb" class="outline-4">
-<h4 id="org153eceb"><span class="section-number-4">2.2.1</span> package.json</h4>
+<div id="outline-container-org96c410d" class="outline-4">
+<h4 id="org96c410d"><span class="section-number-4">2.2.1</span> package.json</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <div class="org-src-container">
 <pre class="src src-js">{
@@ -324,8 +334,8 @@ tree
 </div>
 </div>
 
-<div id="outline-container-orgb93684a" class="outline-4">
-<h4 id="orgb93684a"><span class="section-number-4">2.2.2</span> main.js</h4>
+<div id="outline-container-org8dbd12c" class="outline-4">
+<h4 id="org8dbd12c"><span class="section-number-4">2.2.2</span> main.js</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #8ac6f2; font-weight: bold;">const</span> {app, BrowserWindow} = require(<span style="color: #95e454;">'electron'</span>)
@@ -385,8 +395,8 @@ app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
 </div>
 </div>
 
-<div id="outline-container-orgde6f04e" class="outline-4">
-<h4 id="orgde6f04e"><span class="section-number-4">2.2.3</span> index.html</h4>
+<div id="outline-container-orgd65e2b9" class="outline-4">
+<h4 id="orgd65e2b9"><span class="section-number-4">2.2.3</span> index.html</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <div class="org-src-container">
 <pre class="src src-browser">&lt;<span style="color: #8ac6f2; font-weight: bold;">!DOCTYPE</span> html&gt;
@@ -408,11 +418,69 @@ app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
 </div>
 </div>
 </div>
+
+<div id="outline-container-org36e0a69" class="outline-2">
+<h2 id="org36e0a69"><span class="section-number-2">3</span> Run</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-shell" id="org9188b6e">electron .
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee42c2f" class="outline-2">
+<h2 id="orgee42c2f"><span class="section-number-2">4</span> Deploy</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org6c244ed" class="outline-3">
+<h3 id="org6c244ed"><span class="section-number-3">4.1</span> Install electron-packager</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="org7df8033">npm i -g electron-packager
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org269f622" class="outline-3">
+<h3 id="org269f622"><span class="section-number-3">4.2</span> Update .gitignore</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-text" id="org4c04af9">node_modules/
+qs-electron-linux-x64/
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf4a6348" class="outline-3">
+<h3 id="orgf4a6348"><span class="section-number-3">4.3</span> Deploy your app</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The deploy command is as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org4858796">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]
+</pre>
+</div>
+
+<p>
+If electron is not in your package.json, you need to specify the electron version in the deploy command.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org46174c1">electron-packager . --electron-version=1.6.2
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-14 Sex 00:00</p>
 <p class="author">Author: Marcos Moritz</p>
-<p class="date">Created: 2017-04-14 Sex 04:36</p>
+<p class="date">Created: 2017-04-14 Sex 16:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
