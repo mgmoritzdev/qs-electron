@@ -42,7 +42,7 @@
     position: relative;
     overflow: visible;
     padding-top: 1.2em;
-    background-color: #449;
+    background-color: #479;
   }
   pre.src:before {
     display: none;
@@ -267,10 +267,10 @@ Find out more about <a href="https://electron.atom.io/">electron</a> and <a href
 <h3 id="org5a83fc6"><span class="section-number-3">2.1</span> Basic install</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgd28e644"><span style="color: #99968b;"># </span><span style="color: #99968b;">Install as a development dependency</span>
-<span style="color: #99968b;">#</span><span style="color: #99968b;">npm install electron</span>
+<pre class="src src-shell" id="orgd28e644"><span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install as a development dependency</span>
+<span style="color: #bbb8ad;">#</span><span style="color: #bbb8ad;">npm install electron</span>
 
-<span style="color: #99968b;"># </span><span style="color: #99968b;">Install the `electron` command globally in your $PATH</span>
+<span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install the `electron` command globally in your $PATH</span>
 npm i -g electron
 </pre>
 </div>
@@ -308,50 +308,50 @@ tree
 <span style="color: #8ac6f2; font-weight: bold;">const</span> <span style="color: #cae682;">path</span> = require(<span style="color: #95e454;">'path'</span>)
 <span style="color: #8ac6f2; font-weight: bold;">const</span> <span style="color: #cae682;">url</span> = require(<span style="color: #95e454;">'url'</span>)
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">Keep a global reference of the window object, if you don't, the window will</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">be closed automatically when the JavaScript object is garbage collected.</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Keep a global reference of the window object, if you don't, the window will</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">be closed automatically when the JavaScript object is garbage collected.</span>
 <span style="color: #8ac6f2; font-weight: bold;">let</span> <span style="color: #cae682;">win</span>
 
 <span style="color: #8ac6f2; font-weight: bold;">function</span> <span style="color: #cae682;">createWindow</span> () {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Create the browser window.</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Create the browser window.</span>
   win = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BrowserWindow</span>({width: 800, height: 600})
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">and load the index.html of the app.</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">and load the index.html of the app.</span>
   win.loadURL(url.format({
     pathname: path.join(__dirname, <span style="color: #95e454;">'index.html'</span>),
     protocol: <span style="color: #95e454;">'file:'</span>,
     slashes: <span style="color: #e5786d;">true</span>
   }))
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Open the DevTools.</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Open the DevTools.</span>
   win.webContents.openDevTools()
 
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">Emitted when the window is closed.</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Emitted when the window is closed.</span>
   win.on(<span style="color: #95e454;">'closed'</span>, () =&gt; {
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">Dereference the window object, usually you would store windows</span>
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">in an array if your app supports multi windows, this is the time</span>
-    <span style="color: #99968b;">// </span><span style="color: #99968b;">when you should delete the corresponding element.</span>
+    <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Dereference the window object, usually you would store windows</span>
+    <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">in an array if your app supports multi windows, this is the time</span>
+    <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">when you should delete the corresponding element.</span>
     win = <span style="color: #e5786d;">null</span>
   })
 }
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">This method will be called when Electron has finished</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">initialization and is ready to create browser windows.</span>
-<span style="color: #99968b;">// </span><span style="color: #99968b;">Some APIs can only be used after this event occurs.</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">This method will be called when Electron has finished</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">initialization and is ready to create browser windows.</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Some APIs can only be used after this event occurs.</span>
 app.on(<span style="color: #95e454;">'ready'</span>, createWindow)
 
-<span style="color: #99968b;">// </span><span style="color: #99968b;">Quit when all windows are closed.</span>
+<span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">Quit when all windows are closed.</span>
 app.on(<span style="color: #95e454;">'window-all-closed'</span>, () =&gt; {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">On macOS it is common for applications and their menu bar</span>
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">to stay active until the user quits explicitly with Cmd + Q</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">On macOS it is common for applications and their menu bar</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">to stay active until the user quits explicitly with Cmd + Q</span>
   <span style="color: #8ac6f2; font-weight: bold;">if</span> (process.platform !== <span style="color: #95e454;">'darwin'</span>) {
     app.quit()
   }
 })
 
 app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">On macOS it's common to re-create a window in the app when the</span>
-  <span style="color: #99968b;">// </span><span style="color: #99968b;">dock icon is clicked and there are no other windows open.</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">On macOS it's common to re-create a window in the app when the</span>
+  <span style="color: #bbb8ad;">// </span><span style="color: #bbb8ad;">dock icon is clicked and there are no other windows open.</span>
   <span style="color: #8ac6f2; font-weight: bold;">if</span> (win === <span style="color: #e5786d;">null</span>) {
     createWindow()
   }
