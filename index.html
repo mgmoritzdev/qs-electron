@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-04-14 Sex 03:41 -->
+<!-- 2017-04-14 Sex 04:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Electron Study</title>
@@ -234,11 +234,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgbcf6122">1. Objective</a></li>
-<li><a href="#orgd409de1">2. Website</a>
+<li><a href="#orgcba51e8">1. Objective</a></li>
+<li><a href="#org26334a8">2. Website</a>
 <ul>
-<li><a href="#org5a83fc6">2.1. Basic install</a></li>
-<li><a href="#org7d1442a">2.2. Electron Quick Start</a></li>
+<li><a href="#org6b91d62">2.1. Basic install</a></li>
+<li><a href="#org5642148">2.2. Electron Quick Start</a>
+<ul>
+<li><a href="#org153eceb">2.2.1. package.json</a></li>
+<li><a href="#orgb93684a">2.2.2. main.js</a></li>
+<li><a href="#orgde6f04e">2.2.3. index.html</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -246,8 +252,8 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgbcf6122" class="outline-2">
-<h2 id="orgbcf6122"><span class="section-number-2">1</span> Objective</h2>
+<div id="outline-container-orgcba51e8" class="outline-2">
+<h2 id="orgcba51e8"><span class="section-number-2">1</span> Objective</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Quick straight-forward steps to create a electron-angularJS project
@@ -255,19 +261,19 @@ Quick straight-forward steps to create a electron-angularJS project
 </div>
 </div>
 
-<div id="outline-container-orgd409de1" class="outline-2">
-<h2 id="orgd409de1"><span class="section-number-2">2</span> Website</h2>
+<div id="outline-container-org26334a8" class="outline-2">
+<h2 id="org26334a8"><span class="section-number-2">2</span> Website</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Find out more about <a href="https://electron.atom.io/">electron</a> and <a href="https://angularjs.org/">angular</a>. The github page for electron <a href="https://github.com/electron/electron">docs</a>.
 </p>
 </div>
 
-<div id="outline-container-org5a83fc6" class="outline-3">
-<h3 id="org5a83fc6"><span class="section-number-3">2.1</span> Basic install</h3>
+<div id="outline-container-org6b91d62" class="outline-3">
+<h3 id="org6b91d62"><span class="section-number-3">2.1</span> Basic install</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgd28e644"><span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install as a development dependency</span>
+<pre class="src src-shell" id="org072bbad"><span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install as a development dependency</span>
 <span style="color: #bbb8ad;">#</span><span style="color: #bbb8ad;">npm install electron</span>
 
 <span style="color: #bbb8ad;"># </span><span style="color: #bbb8ad;">Install the `electron` command globally in your $PATH</span>
@@ -277,16 +283,16 @@ npm i -g electron
 </div>
 </div>
 
-<div id="outline-container-org7d1442a" class="outline-3">
-<h3 id="org7d1442a"><span class="section-number-3">2.2</span> Electron Quick Start</h3>
+<div id="outline-container-org5642148" class="outline-3">
+<h3 id="org5642148"><span class="section-number-3">2.2</span> Electron Quick Start</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org2391277">mkdir -p ~/workspace/node/qs-electron
+<pre class="src src-shell" id="orge768e03">mkdir -p ~/workspace/node/qs-electron
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgb4d66dc">touch package.json
+<pre class="src src-shell" id="org4043ae3">touch package.json
 touch main.js
 touch index.html
 
@@ -294,6 +300,19 @@ tree
 </pre>
 </div>
 
+<pre class="example">
+.
+├── index.html
+├── main.js
+└── package.json
+
+0 directories, 3 files
+</pre>
+</div>
+
+<div id="outline-container-org153eceb" class="outline-4">
+<h4 id="org153eceb"><span class="section-number-4">2.2.1</span> package.json</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <div class="org-src-container">
 <pre class="src src-js">{
   <span style="color: #95e454;">"name"</span>: <span style="color: #95e454;">"qs-electron"</span>,
@@ -302,7 +321,12 @@ tree
 }
 </pre>
 </div>
+</div>
+</div>
 
+<div id="outline-container-orgb93684a" class="outline-4">
+<h4 id="orgb93684a"><span class="section-number-4">2.2.2</span> main.js</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <div class="org-src-container">
 <pre class="src src-js"><span style="color: #8ac6f2; font-weight: bold;">const</span> {app, BrowserWindow} = require(<span style="color: #95e454;">'electron'</span>)
 <span style="color: #8ac6f2; font-weight: bold;">const</span> <span style="color: #cae682;">path</span> = require(<span style="color: #95e454;">'path'</span>)
@@ -358,7 +382,12 @@ app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
 })
 </pre>
 </div>
+</div>
+</div>
 
+<div id="outline-container-orgde6f04e" class="outline-4">
+<h4 id="orgde6f04e"><span class="section-number-4">2.2.3</span> index.html</h4>
+<div class="outline-text-4" id="text-2-2-3">
 <div class="org-src-container">
 <pre class="src src-browser">&lt;<span style="color: #8ac6f2; font-weight: bold;">!DOCTYPE</span> html&gt;
 &lt;<span style="color: #cae682;">html</span>&gt;
@@ -379,10 +408,11 @@ app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
 <p class="date">Date: 2017-04-14 Sex 00:00</p>
 <p class="author">Author: Marcos Moritz</p>
-<p class="date">Created: 2017-04-14 Sex 03:41</p>
+<p class="date">Created: 2017-04-14 Sex 04:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
