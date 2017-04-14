@@ -1,13 +1,389 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-14 Sex 03:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Electron Study</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Marcos Moritz" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+    background-color: #449;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Electron Study</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgbcf6122">1. Objective</a></li>
+<li><a href="#orgd409de1">2. Website</a>
+<ul>
+<li><a href="#org5a83fc6">2.1. Basic install</a></li>
+<li><a href="#org7d1442a">2.2. Electron Quick Start</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgbcf6122" class="outline-2">
+<h2 id="orgbcf6122"><span class="section-number-2">1</span> Objective</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Quick straight-forward steps to create a electron-angularJS project
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd409de1" class="outline-2">
+<h2 id="orgd409de1"><span class="section-number-2">2</span> Website</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Find out more about <a href="https://electron.atom.io/">electron</a> and <a href="https://angularjs.org/">angular</a>. The github page for electron <a href="https://github.com/electron/electron">docs</a>.
+</p>
+</div>
+
+<div id="outline-container-org5a83fc6" class="outline-3">
+<h3 id="org5a83fc6"><span class="section-number-3">2.1</span> Basic install</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgd28e644"><span style="color: #99968b;"># </span><span style="color: #99968b;">Install as a development dependency</span>
+<span style="color: #99968b;">#</span><span style="color: #99968b;">npm install electron</span>
+
+<span style="color: #99968b;"># </span><span style="color: #99968b;">Install the `electron` command globally in your $PATH</span>
+npm i -g electron
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7d1442a" class="outline-3">
+<h3 id="org7d1442a"><span class="section-number-3">2.2</span> Electron Quick Start</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org2391277">mkdir -p ~/workspace/node/qs-electron
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb4d66dc">touch package.json
+touch main.js
+touch index.html
+
+tree
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-js">{
+  <span style="color: #95e454;">"name"</span>: <span style="color: #95e454;">"qs-electron"</span>,
+  <span style="color: #95e454;">"version"</span>: <span style="color: #95e454;">"0.0.1"</span>,
+  <span style="color: #95e454;">"main"</span>: <span style="color: #95e454;">"main.js"</span>
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-js"><span style="color: #8ac6f2; font-weight: bold;">const</span> {app, BrowserWindow} = require(<span style="color: #95e454;">'electron'</span>)
+<span style="color: #8ac6f2; font-weight: bold;">const</span> <span style="color: #cae682;">path</span> = require(<span style="color: #95e454;">'path'</span>)
+<span style="color: #8ac6f2; font-weight: bold;">const</span> <span style="color: #cae682;">url</span> = require(<span style="color: #95e454;">'url'</span>)
+
+<span style="color: #99968b;">// </span><span style="color: #99968b;">Keep a global reference of the window object, if you don't, the window will</span>
+<span style="color: #99968b;">// </span><span style="color: #99968b;">be closed automatically when the JavaScript object is garbage collected.</span>
+<span style="color: #8ac6f2; font-weight: bold;">let</span> <span style="color: #cae682;">win</span>
+
+<span style="color: #8ac6f2; font-weight: bold;">function</span> <span style="color: #cae682;">createWindow</span> () {
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">Create the browser window.</span>
+  win = <span style="color: #8ac6f2; font-weight: bold;">new</span> <span style="color: #92a65e; font-weight: bold;">BrowserWindow</span>({width: 800, height: 600})
+
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">and load the index.html of the app.</span>
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, <span style="color: #95e454;">'index.html'</span>),
+    protocol: <span style="color: #95e454;">'file:'</span>,
+    slashes: <span style="color: #e5786d;">true</span>
+  }))
+
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">Open the DevTools.</span>
+  win.webContents.openDevTools()
+
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">Emitted when the window is closed.</span>
+  win.on(<span style="color: #95e454;">'closed'</span>, () =&gt; {
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">Dereference the window object, usually you would store windows</span>
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">in an array if your app supports multi windows, this is the time</span>
+    <span style="color: #99968b;">// </span><span style="color: #99968b;">when you should delete the corresponding element.</span>
+    win = <span style="color: #e5786d;">null</span>
+  })
+}
+
+<span style="color: #99968b;">// </span><span style="color: #99968b;">This method will be called when Electron has finished</span>
+<span style="color: #99968b;">// </span><span style="color: #99968b;">initialization and is ready to create browser windows.</span>
+<span style="color: #99968b;">// </span><span style="color: #99968b;">Some APIs can only be used after this event occurs.</span>
+app.on(<span style="color: #95e454;">'ready'</span>, createWindow)
+
+<span style="color: #99968b;">// </span><span style="color: #99968b;">Quit when all windows are closed.</span>
+app.on(<span style="color: #95e454;">'window-all-closed'</span>, () =&gt; {
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">On macOS it is common for applications and their menu bar</span>
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">to stay active until the user quits explicitly with Cmd + Q</span>
+  <span style="color: #8ac6f2; font-weight: bold;">if</span> (process.platform !== <span style="color: #95e454;">'darwin'</span>) {
+    app.quit()
+  }
+})
+
+app.on(<span style="color: #95e454;">'activate'</span>, () =&gt; {
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">On macOS it's common to re-create a window in the app when the</span>
+  <span style="color: #99968b;">// </span><span style="color: #99968b;">dock icon is clicked and there are no other windows open.</span>
+  <span style="color: #8ac6f2; font-weight: bold;">if</span> (win === <span style="color: #e5786d;">null</span>) {
+    createWindow()
+  }
+})
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-browser">&lt;<span style="color: #8ac6f2; font-weight: bold;">!DOCTYPE</span> html&gt;
+&lt;<span style="color: #cae682;">html</span>&gt;
+  &lt;<span style="color: #cae682;">head</span>&gt;
+    &lt;<span style="color: #cae682;">meta</span> <span style="color: #cae682;">charset</span>=<span style="color: #95e454;">"UTF-8"</span>&gt;
+    &lt;<span style="color: #cae682;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Hello World!</span>&lt;/<span style="color: #cae682;">title</span>&gt;
+  &lt;/<span style="color: #cae682;">head</span>&gt;
+  &lt;<span style="color: #cae682;">body</span>&gt;
+    &lt;<span style="color: #cae682;">h1</span>&gt;<span style="font-weight: bold; text-decoration: underline;">Hello World!</span>&lt;/<span style="color: #cae682;">h1</span>&gt;
+    We are using node &lt;<span style="color: #cae682;">script</span>&gt;document.write(process.versions.node)&lt;/<span style="color: #cae682;">script</span>&gt;,
+    Chrome &lt;<span style="color: #cae682;">script</span>&gt;document.write(process.versions.chrome)&lt;/<span style="color: #cae682;">script</span>&gt;,
+    and Electron &lt;<span style="color: #cae682;">script</span>&gt;document.write(process.versions.electron)&lt;/<span style="color: #cae682;">script</span>&gt;.
+  &lt;/<span style="color: #cae682;">body</span>&gt;
+&lt;/<span style="color: #cae682;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2017-04-14 Sex 00:00</p>
+<p class="author">Author: Marcos Moritz</p>
+<p class="date">Created: 2017-04-14 Sex 03:41</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
 </html>
