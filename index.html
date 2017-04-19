@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/main.controller.js"></script>
   </head>
-  <body>
-    <h1>Hello World!</h1>
+  <body ng-controller="mainController as vm">
+    <h1>{{vm.hello}}</h1>
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
